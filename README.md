@@ -1,7 +1,7 @@
 **Note: this is a very early release with fairly undocumented and unstructured code - use at own risk.**
 
 #About Lightdoc
-Lightdoc is a documentation system visually inspired by Appledoc. It allows developers to create entire documentations using Markdown and JSON. The actual documentation is written in Markdown, chapters and subchapters are arranged with JSON. 
+Lightdoc is a documentation system visually inspired by Appledoc and a [byproduct of the Cocos2D and SpriteBuilder documentation](http://makegameswith.us/docs). It allows developers to create entire documentations using Markdown and JSON. The actual documentation is written in Markdown, chapters and subchapters are arranged with JSON. 
 
 The documentation system itself uses HTML, CSS and JavaScript only and can easily be hosted on any kind of webserver. The documentation system is SEO compatible when hosted on a PHP server.
 
@@ -193,3 +193,14 @@ If you want to support SEO for your documentation you need to:
 
 - host the documentation on a PHP server
 - run `node collectsitemap.js` to build the *Sitemap.xml* (you can setup a git hook for this)
+
+#License
+
+Released under the MIT license.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
