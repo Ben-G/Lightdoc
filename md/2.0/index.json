@@ -1,0 +1,55 @@
+{   "content"  :
+		[  
+			{
+				"title" : "Welcome",
+				"path"  : "welcome",
+				"version"  : "2.0"
+			},
+
+			{
+		    	"title" : "First Lightdoc doc",
+		    	"path"  : "first-project",
+		    	"version" : "1.0",
+		    	"children": 
+		    		[
+		                {
+		                	"title" : "Create Lightdoc content",
+		                	"path"  : "lightdoc-content",
+		                	"version"  : "1.0"
+		                },
+						
+						{	"title" : "Support multiple versions",
+		                	"path"  : "multiple-versions",
+		                	"version"  : "1.0"	
+		                }
+		            ]
+		    },
+			
+			{
+				"title" : "More example chapters",
+				"path"  : "more-examples",
+		        "version"  : "1.0",		                	
+
+				"children": 
+		    		[
+		    		    {
+		                	"title" : "subchapter 1",
+		                	"path"  : "subchapter-1",
+		                	"version"  : "1.0"
+		                },
+
+		                {
+		                	"title" : "subchapter 2",
+		                	"path"  : "subchapter-2",
+		                	"version"  : "1.0"		                	
+		                },
+
+		               {
+			            	"title" : "subchapter 3",
+			            	"path"  : "subchapter-3",
+			            	"version"  : "1.0"		               	
+		    			}
+		        	]
+			}
+		]
+}

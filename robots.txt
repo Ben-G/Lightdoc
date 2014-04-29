@@ -1,0 +1,1 @@
+Sitemap: http://cocos2d.makegameswith.us/sitemap.xml
