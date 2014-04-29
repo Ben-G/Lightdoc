@@ -6,17 +6,19 @@ Lightdoc is a documentation system visually inspired by Appledoc. It allows deve
 The documentation system itself uses HTML, CSS and JavaScript only and can easily be hosted on any kind of webserver. The documentation system is SEO compatible when hosted on a PHP server.
 
 ##Key Features
-- write documentation entirely in Markdown
+- write documentation entirely in **Markdown**
 - define structure of the documentation (chapters, subchapters) entirely in JSON
-- manage multiple versions of your documentation
-- host on any webserver (application only uses HTML, CSS and JavaScript)
-- host on PHP server to make the application crawlable for Google 
+- manage **multiple versions of your documentation**
+- host on any webserver (application only uses HTML, CSS and JavaScript), **ready to deploy on heroku**
+- **SEO compatible**
 
 ##Lightdoc User Interface
 ![image](github_readme/lightdoc_ui.png)
 
 ##Example installations
-The [MakeGamesWithus Cocos2D and SpriteBuilder documentation](https://www.makegameswith.us/docs) uses Lightdoc with a slightly modified HTML template.
+
+- the [MakeGamesWithus Cocos2D and SpriteBuilder documentation](https://www.makegameswith.us/docs) uses Lightdoc with a slightly modified HTML template
+- this example Lightdoc installation is hosted on [heroku](http://lightdoc.herokuapp.com/)
 
 #How to create your own documentation
 The entire documentation resides int the subfolder *md* of the main Lightdoc repository:
@@ -42,7 +44,7 @@ Each version folder contains an *index.json* that describes the structure of the
 ![image](github_readme/lightdoc_version.png)
 
 ###Setting up index.json
-The *index.json* file defines chapters and subchapters of the documentation. Currently lightdoc only supports one level of subchapters. The *index.json* for the example above looks as following:
+The *index.json* file defines chapters and subchapters of the documentation. Currently Lightdoc only supports one level of subchapters. The *index.json* for the example above looks as following:
 
 	{   "content"  :
 			[  
