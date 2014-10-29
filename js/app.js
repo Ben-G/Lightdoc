@@ -8,6 +8,7 @@ Docs.prototype.currentPageLoaded = false;
 Docs.prototype.firstPage = null;
 Docs.prototype.versions = {};
 Docs.prototype.selectedVersion = null;
+Docs.prototype.latestVersion = null;
 Docs.prototype.currentVersionIdentifier = null;
 
 var root = "docs";
@@ -15,10 +16,24 @@ var root = "docs";
 Docs.prototype.loadEntry = function (name) {
       this.currentPage = name;
       // use the Markdown version configured in 'index.json'
-      var version = docs.steps[name].version
+      var version = null;
 
-      $.get("md/"+version+"/"+name+"/"+name+".md", function( data ) {
-            var html = markdown.toHTMLWithImagePath(data, 'md/'+version+'/'+name+'/');
+      if (docs.steps[name] === undefined) {
+        // if page does not exist, default to first page
+        name = docs.firstPage;
+      }
+      
+      version = docs.steps[name].version;
+
+      // if user is not viewing the latest version of the documentation: display warning message
+      if (docs.selectedVersion != docs.latestVersion) {
+        $('#version_info').show();
+      } else {
+        $('#version_info').hide();
+      }
+
+          $.get("md/"+version+"/"+name+"/"+name+".md", function( data ) {
+            var html = markedWithImageRootPath(data, 'md/'+version+'/'+name+'/');
             var prettify = hljs.highlightAuto(html);
             prettify = hljs.fixMarkup(prettify);
           $('#main_content').html(html);
@@ -63,6 +78,7 @@ Docs.prototype.loadEntry = function (name) {
 
 Docs.prototype.updateURL = function() {
   location.hash = "#!/"+root+"/"+this.selectedVersion.path+"/"+this.currentPage;
+  $("#version_select").val(this.selectedVersion.path);
 };
 
 Docs.prototype.loadVersions = function() {
@@ -78,6 +94,8 @@ Docs.prototype.loadVersions = function() {
         var item=$(this);
         docs.updateAPIVersion(item.val());
       });
+
+      docs.latestVersion = versionsData[versionsData.length- 1];
 
       if (docs.currentVersionIdentifier === null) {
         docs.selectedVersion = versionsData[versionsData.length- 1];
