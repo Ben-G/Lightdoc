@@ -21,6 +21,12 @@
 						{	"title" : "Support multiple versions",
 		                	"path"  : "multiple-versions",
 		                	"version"  : "1.0"	
+		                },
+
+		                {
+		                	"title" : "Folder child",
+		                	"path"  : "first-project/subfolder/first-project",
+		                	"version"  : "1.0"
 		                }
 		            ]
 		    },

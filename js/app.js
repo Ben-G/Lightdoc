@@ -186,14 +186,17 @@ Docs.prototype.parseAPIVersion = function () {
 
 var docs = new Docs();
 
+    var re = new RegExp("/\#\!/" + root + "\/(.*)");
+
     (function($) {
       var app = $.sammy(function() {
 
-        this.get('#!/'+root+'/:version/:name', function() {
-            var name = this.params['name'];
-            var version = this.params['version'];
+        this.get(re, function() {
+            var splat = this.params['splat'];
+            var params = splat[0].split('/');
+            var version = params[0];
+            var name = params[1];
             docs.currentPage = name;
-
 
             docs.updateAPIVersion(version);
             
@@ -206,7 +209,7 @@ var docs = new Docs();
         });  
     });
 
-      $(function() {
+    $(function() {
         app.run()
       });
     })(jQuery);
