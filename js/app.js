@@ -32,8 +32,26 @@ Docs.prototype.loadEntry = function (name) {
         $('#version_info').hide();
       }
 
-          $.get("md/"+version+"/"+name+"/"+name+".md", function( data ) {
-            var html = markedWithImageRootPath(data, 'md/'+version+'/'+name+'/');
+      // check if provided path is a full path or 'short' path
+
+      var filePath = null;
+      var imageRootPath = null;
+
+      if (name.indexOf("/") > -1) {
+        // full path
+        filePath = "md/"+version+"/"+name+".md"
+        var folderComponents = filePath.split("/")
+        var folderPath = folderComponents.slice(0, folderComponents.length-1)
+        folderPath = folderPath.join('/')
+        imageRootPath = folderPath +'/'
+      } else {
+        // short path
+        filePath = "md/"+version+"/"+name+"/"+name+".md"
+        imageRootPath = 'md/'+version+'/'+name+'/'
+      }
+
+          $.get(filePath, function( data ) {
+            var html = markedWithImageRootPath(data, imageRootPath);
             var prettify = hljs.highlightAuto(html);
             prettify = hljs.fixMarkup(prettify);
           $('#main_content').html(html);
@@ -48,7 +66,7 @@ Docs.prototype.loadEntry = function (name) {
       $("#current_guide_title").text(this.steps[name].title);
       $("#indexList li a").css("font-weight", "normal");
 
-      var listEntry = $('#entry-'+this.steps[name].path);
+      var listEntry = $('#entry-'+this.steps[name].idPath);
       listEntry.css("font-weight", "bold");
 
       // stetup next and previous buttons
@@ -143,7 +161,7 @@ Docs.prototype.parseAPIVersion = function () {
                     flattenedArray.push(content[i]);
 
                     if (content[i].children) {
-                        for (var j = 0; j < content[i].children.length; j++) {
+                        for (var j = 0; j < content[i].children.length; j++) {                            
                             flattenedArray.push(content[i].children[j]);
                         }
                     }
@@ -151,6 +169,8 @@ Docs.prototype.parseAPIVersion = function () {
 
                 for (var i = 0; i < flattenedArray.length; i++) {
                     var step = flattenedArray[i];
+                    // store id compatible path
+                    step.idPath = htmlIdCompatiblePath(step.path)
                     if (!closure.steps[step.path]) {
                         closure.steps[step.path] = step;
                     } else {
@@ -195,7 +215,7 @@ var docs = new Docs();
             var splat = this.params['splat'];
             var params = splat[0].split('/');
             var version = params[0];
-            var name = params[1];
+            var name = params.slice(1).join('/');
             docs.currentPage = name;
 
             docs.updateAPIVersion(version);
@@ -218,3 +238,8 @@ var docs = new Docs();
     $( document ).ready(function() {
       docs.loadVersions();
     });
+
+function htmlIdCompatiblePath(path) {
+  // return path.replace("/","_")
+  return path.replace(new RegExp("/", 'g'), "_");
+}

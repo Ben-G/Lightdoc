@@ -41,11 +41,11 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
     <script id="list-template" type="text/x-handlebars-template">  
     <ul id="indexList">  
       {{#each objects}}
-        <li><a href="#!/docs/{{../apiversion}}/{{path}}" id="entry-{{path}}">{{title}}</a></li>
+        <li><a href="#!/docs/{{../apiversion}}/{{path}}" id="entry-{{idPath}}">{{title}}</a></li>
         {{#if children}}
             <ul>
             {{#each children}}
-                    <li><a href="#!/docs/{{../../../apiversion}}/{{path}}" id="entry-{{path}}">{{title}}</a></li>
+                    <li><a href="#!/docs/{{../../../apiversion}}/{{path}}" id="entry-{{idPath}}">{{title}}</a></li>
             {{/each}}
             </ul>
         {{/if}}

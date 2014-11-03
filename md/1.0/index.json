@@ -27,6 +27,11 @@
 		                	"title" : "Folder child",
 		                	"path"  : "first-project/subfolder/first-project",
 		                	"version"  : "1.0"
+		                }, 
+		                {
+		                	"title" : "Another one",
+		                	"path"  : "first-project/subfolder/another-one",
+		                	"version"  : "1.0"
 		                }
 		            ]
 		    },
