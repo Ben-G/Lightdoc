@@ -51,7 +51,7 @@ Docs.prototype.loadEntry = function (name) {
       }
 
           $.get(filePath, function( data ) {
-            var html = markedWithImageRootPath(data, imageRootPath);
+            var html = markedWithImageRootPath(data, imageRootPath, docs.selectedVersion.path);
             var prettify = hljs.highlightAuto(html);
             prettify = hljs.fixMarkup(prettify);
           $('#main_content').html(html);

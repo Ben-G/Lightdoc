@@ -1,6 +1,8 @@
-#Welcome to Lightdoc Version 2!
+#Welcome to Lightdoc!
 
 Thanks for using this early release of Lightdoc.
+
+Here's an internal link: [Chapter2](./lightdoc-content)
 
 ## Some information on Lightdoc
 

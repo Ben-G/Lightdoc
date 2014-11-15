@@ -613,14 +613,30 @@ InlineLexer.prototype.output = function(src) {
 
     // link
     if (cap = this.rules.link.exec(src)) {
-      src = src.substring(cap[0].length);
-      this.inLink = true;
-      out += this.outputLink(cap, {
-        href: cap[2],
-        title: cap[3]
-      });
-      this.inLink = false;
-      continue;
+      // check if this is an internal lightdoc link
+      if (cap[2].split('/')[0] === '.') {
+        src = src.substring(cap[0].length);
+        var components = cap[2].split('/')
+        components.splice(0,1)
+        var url = components.join('/')
+        var interalHref = '/#!/docs/'+marked.currentDocVersion+'/'+url;
+        this.inLink = true;
+        out += this.outputLink(cap, {
+          href: interalHref,
+          title: cap[3]
+        });
+        this.inLink = false;
+        continue;
+      } else {
+        src = src.substring(cap[0].length);
+        this.inLink = true;
+        out += this.outputLink(cap, {
+          href: cap[2],
+          title: cap[3]
+        });
+        this.inLink = false;
+        continue;
+      }
     }
 
     // reflink, nolink
@@ -1137,8 +1153,9 @@ function merge(obj) {
  * Marked
  */
 
-function markedWithImageRootPath(src, imageRootPath) {
+function markedWithImageRootPath(src, imageRootPath, currentDocVersion) {
   marked.imageRootPath = imageRootPath;
+  marked.currentDocVersion = currentDocVersion;
   return marked(src);
 }
 
