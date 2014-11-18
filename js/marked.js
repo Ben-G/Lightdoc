@@ -619,7 +619,7 @@ InlineLexer.prototype.output = function(src) {
         var components = cap[2].split('/')
         components.splice(0,1)
         var url = components.join('/')
-        var interalHref = '/#!/docs/'+marked.currentDocVersion+'/'+url;
+        var interalHref = '#!/docs/'+marked.currentDocVersion+'/'+url;
         this.inLink = true;
         out += this.outputLink(cap, {
           href: interalHref,
