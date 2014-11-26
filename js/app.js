@@ -206,7 +206,7 @@ Docs.prototype.parseAPIVersion = function () {
 
 var docs = new Docs();
 
-    var re = new RegExp("/\#\!/" + root + "\/(.*)");
+    var re = new RegExp("#\!/" + root + "\/(.*)");
 
     (function($) {
       var app = $.sammy(function() {
