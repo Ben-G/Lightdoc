@@ -51,7 +51,7 @@ Docs.prototype.loadEntry = function (name) {
       }
 
           $.get(filePath, function( data ) {
-            var html = markedWithImageRootPath(data, imageRootPath, docs.selectedVersion.path);
+            var html = markedWithImageRootPath(data, imageRootPath, docs.selectedVersion.path, root);
             var prettify = hljs.highlightAuto(html);
             prettify = hljs.fixMarkup(prettify);
           $('#main_content').html(html);
@@ -187,7 +187,7 @@ Docs.prototype.parseAPIVersion = function () {
 
                 var source   = $("#list-template").html();
                 var template = Handlebars.compile(source);
-                var wrapper  = {objects: content, apiversion:closure.selectedVersion.path};
+                var wrapper  = {objects: content, apiversion:closure.selectedVersion.path, docRoot: root};
                 var html     = template(wrapper);
                 $('#indexContainer').html(html);
 

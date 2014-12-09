@@ -619,7 +619,7 @@ InlineLexer.prototype.output = function(src) {
         var components = cap[2].split('/')
         components.splice(0,1)
         var url = components.join('/')
-        var interalHref = '#!/docs/'+marked.currentDocVersion+'/'+url;
+        var interalHref = '#!/'+marked.docRoot+'/'+marked.currentDocVersion+'/'+url;
         this.inLink = true;
         out += this.outputLink(cap, {
           href: interalHref,
@@ -1153,9 +1153,10 @@ function merge(obj) {
  * Marked
  */
 
-function markedWithImageRootPath(src, imageRootPath, currentDocVersion) {
+function markedWithImageRootPath(src, imageRootPath, currentDocVersion, docRoot) {
   marked.imageRootPath = imageRootPath;
   marked.currentDocVersion = currentDocVersion;
+  marked.docRoot = docRoot;
   return marked(src);
 }
 
